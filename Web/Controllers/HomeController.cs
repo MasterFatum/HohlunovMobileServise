@@ -8,6 +8,8 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
+        Context context = new Context();
+
         public ActionResult Index()
         {
             return View();
@@ -37,7 +39,14 @@ namespace Web.Controllers
 
         public ActionResult Main()
         {
-            return View();
+            IEnumerable<Products> productses = context.Products.ToList().OrderBy(p => p.ProductName);
+
+            return View(productses);
+        }
+
+        public ActionResult AddInFoodBasket()
+        {
+            return RedirectToAction("Main");
         }
     }
 }

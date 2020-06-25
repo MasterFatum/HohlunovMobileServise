@@ -1,7 +1,46 @@
-﻿
+﻿@model IEnumerable<Products>
+
+
 @{
     ViewBag.Title = "Каталог товаров";
 }
 
 <h2>Каталог товаров</h2>
+
+<div align="right">
+</div>
+<br />
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Продукт</th>
+                    <th scope="col">Цена</th>
+                    <th scope="col">Количество</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (Products products in Model)
+                {
+                    <tr>
+                        <td>
+                            @products.ProductName
+                        </td>
+                        <td>
+                            <b>@products.ProductPrice ₽</b>
+                        </td>
+                        <td>
+                            @products.ProductCount
+                        </td>
+                        <td>
+                            @Html.ActionLink("Добавить в корзину", "AddInFoodBasket", "Home", new { products.Id }, new { @class = "btn btn-primary btn-xs" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
