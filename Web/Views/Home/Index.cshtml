@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Домашняя страница";
+}
+
+    <div class="jumbotron">
+        <h1>РЭЛЬФИНА</h1>
+        <p class="lead">Сеть продуктовых магазинов.</p>
+        @Html.ActionLink("Перейти в магазин", "Main", "Home", null, new { @class = "btn btn-danger" })
+    </div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Оплата</h2>
+        <p>
+            Узнать как осуществляется оплата, способы оплаты, условия скидок, подарочные сертификаты, а так же другую полезную информацию
+        </p>
+        @Html.ActionLink("Перейти", "Pays", "Home", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-md-4">
+        <h2>Доставка</h2>
+        <p>Узнать стоимость и условия доставки, населённые пункты в которых возможна доставка, а так же другую полезную информацию</p>
+        @Html.ActionLink("Перейти", "Delivery", "Home", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-md-4">
+        <h2>Контакты</h2>
+        <p>Связаться с нами, получить консультацию в нашей технической поддержке, узнать адреса маших магазинов и пунктов выдачи</p>
+        @Html.ActionLink("Перейти", "Contact", "Home", null, new { @class = "btn btn-primary" })
+    </div>
+</div>
