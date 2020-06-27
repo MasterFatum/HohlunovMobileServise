@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Web.Entities;
 
 namespace Web.Controllers
 {
@@ -11,32 +12,31 @@ namespace Web.Controllers
         Context context = new Context();
         public ActionResult Index()
         {
-            IEnumerable<FoodBasket> foodBaskets = context.FoodBasket.ToList().OrderBy(b => b.ProductName);
+            try
+            {
+                IEnumerable<FoodBasket> foodBaskets = context.FoodBasket.ToList().OrderBy(b => b.ProductName);
 
-            ViewBag.AllPrice = foodBaskets.Sum(p => p.TotalPrice);
+                ViewBag.AllPrice = foodBaskets.Sum(p => p.TotalPrice);
 
-            return View(foodBaskets);
+                return View(foodBaskets);
+            }
+            catch (Exception)
+            {
+                return View();
+            }
+            
         }
 
-        // GET: FoodBasket/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: FoodBasket/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: FoodBasket/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
             }
@@ -46,13 +46,11 @@ namespace Web.Controllers
             }
         }
 
-        // GET: FoodBasket/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: FoodBasket/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -68,26 +66,18 @@ namespace Web.Controllers
             }
         }
 
-        // GET: FoodBasket/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
+            FoodBasket foodBasket = context.FoodBasket.FirstOrDefault(b => b.Id == id);
 
-        // POST: FoodBasket/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            if (foodBasket != null)
             {
-                // TODO: Add delete logic here
+                context.FoodBasket.Remove(foodBasket);
 
-                return RedirectToAction("Index");
+                context.SaveChanges();
             }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction("Index");
         }
     }
 }

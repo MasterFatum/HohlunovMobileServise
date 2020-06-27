@@ -46,8 +46,7 @@ namespace Web.Controllers
 
             return View(productses);
         }
-
-
+        
         public ActionResult AddProductInFoodBasket(FoodBasket product)
         {
             if (product != null)
