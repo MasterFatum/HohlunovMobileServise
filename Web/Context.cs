@@ -1,3 +1,5 @@
+using Web.Entities;
+
 namespace Web
 {
     using System;
@@ -13,7 +15,7 @@ namespace Web
         }
 
         public  DbSet<FoodBasket> FoodBasket { get; set; }
-        public  DbSet<Products> Products { get; set; }
+        public  DbSet<Product> Products { get; set; }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{

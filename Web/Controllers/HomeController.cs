@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Web.Entities;
 
 namespace Web.Controllers
 {
@@ -39,13 +40,28 @@ namespace Web.Controllers
 
         public ActionResult Main()
         {
-            IEnumerable<Products> productses = context.Products.ToList().OrderBy(p => p.ProductName);
+            IEnumerable<Product> productses = context.Products.ToList().OrderBy(p => p.ProductName);
+
+            ViewBag.CountProductsInBasket = context.FoodBasket.Count().ToString();
 
             return View(productses);
         }
 
-        public ActionResult AddInFoodBasket()
+
+        public ActionResult AddProductInFoodBasket(FoodBasket product)
         {
+            if (product != null)
+            {
+
+                product.ProductCount = 1;
+
+                product.TotalPrice = product.ProductPrice;
+
+                context.FoodBasket.Add(product);
+
+                context.SaveChanges();
+            }
+            
             return RedirectToAction("Main");
         }
     }

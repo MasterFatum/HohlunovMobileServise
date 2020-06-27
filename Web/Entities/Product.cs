@@ -1,12 +1,8 @@
-namespace Web
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Products
+namespace Web.Entities
+{
+    public class Product
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }

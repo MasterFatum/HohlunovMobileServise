@@ -13,6 +13,8 @@ namespace Web.Controllers
         {
             IEnumerable<FoodBasket> foodBaskets = context.FoodBasket.ToList().OrderBy(b => b.ProductName);
 
+            ViewBag.AllPrice = foodBaskets.Sum(p => p.TotalPrice);
+
             return View(foodBaskets);
         }
 

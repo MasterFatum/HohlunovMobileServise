@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Products>
+﻿@using Web.Entities
+@model IEnumerable<Web.Entities.Product>
 
 
 @{
@@ -7,9 +8,9 @@
 
 <h2>Каталог товаров</h2>
 
-<div align="right">
-</div>
+<div align="right">Количество товаров в корзине:<b>@Html.ActionLink((String)@ViewBag.CountProductsInBasket, "Index", "FoodBasket")</b></div>
 <br />
+
 <div class="panel panel-success">
     <div class="panel-heading">
         <table class="table table-striped">
@@ -22,7 +23,7 @@
             </thead>
 
             <tbody>
-                @foreach (Products products in Model)
+                @foreach (Product products in Model)
                 {
                 <tr>
                     <td>
@@ -35,9 +36,7 @@
                         @products.ProductCount
                     </td>
                     <td>
-                        @Html.ActionLink("Добавить в корзину", "Main", "Home", new { products.Id }, new { @class = "btn btn-success btn-xs" })
-                    </td>
-                    <td>
+                        @Html.ActionLink("Добавить в корзину", "AddProductInFoodBasket", "Home", new { products.Id, products.ProductName, products.ProductPrice }, new { @class = "btn btn-success btn-xs" })
                         @Html.ActionLink("Купить в 1 клик", "Main", "Home", new { products.Id }, new { @class = "btn btn-warning btn-xs" })
                     </td>
                 </tr>
