@@ -171,8 +171,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FoodBasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Entities\FoodBasket.cs" />
     <Compile Include="Global.asax.cs">
@@ -244,10 +244,10 @@
     <Content Include="Views\Home\Pays.cshtml" />
     <Content Include="Views\Home\Delivery.cshtml" />
     <Content Include="Views\Home\Main.cshtml" />
+    <Content Include="Views\FoodBasket\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Main\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

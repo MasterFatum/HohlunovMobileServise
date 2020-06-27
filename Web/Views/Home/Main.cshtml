@@ -24,20 +24,23 @@
             <tbody>
                 @foreach (Products products in Model)
                 {
-                    <tr>
-                        <td>
-                            @products.ProductName
-                        </td>
-                        <td>
-                            <b>@products.ProductPrice ₽</b>
-                        </td>
-                        <td>
-                            @products.ProductCount
-                        </td>
-                        <td>
-                            @Html.ActionLink("Добавить в корзину", "AddInFoodBasket", "Home", new { products.Id }, new { @class = "btn btn-primary btn-xs" })
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @products.ProductName
+                    </td>
+                    <td>
+                        <b>@products.ProductPrice ₽</b>
+                    </td>
+                    <td>
+                        @products.ProductCount
+                    </td>
+                    <td>
+                        @Html.ActionLink("Добавить в корзину", "Main", "Home", new { products.Id }, new { @class = "btn btn-success btn-xs" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Купить в 1 клик", "Main", "Home", new { products.Id }, new { @class = "btn btn-warning btn-xs" })
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

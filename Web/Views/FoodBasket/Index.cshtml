@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FoodBasket>
+
+@{
+    ViewBag.Title = "Корзина";
+}
+
+<h2>Корзина</h2>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Продукт</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Количество</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @foreach (FoodBasket foodBasket in Model)
+            {
+                <tr>
+                    <td>
+                        @foodBasket.ProductName
+                    </td>
+                    <td>
+                        <b>@foodBasket.ProductPrice ₽</b>
+                    </td>
+                    <td>
+                        @foodBasket.ProductCount
+                    </td>
+                    <td>
+                        @Html.ActionLink("Удалить", "Index", "FoodBasket", new { foodBasket.Id }, new { @class = "btn btn-danger btn-xs" })
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
