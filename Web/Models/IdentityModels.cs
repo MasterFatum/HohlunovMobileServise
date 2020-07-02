@@ -6,7 +6,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Web.Models
 {
-    // В профиль пользователя можно добавить дополнительные данные, если указать больше свойств для класса ApplicationUser
     public class ApplicationUser : IdentityUser
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

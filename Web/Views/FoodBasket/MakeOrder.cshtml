@@ -1,0 +1,18 @@
+﻿@model IEnumerable<FoodBasket>
+
+
+@{
+    ViewBag.Title = "Завершить покупку";
+}
+
+<h2>Завершение покупки</h2>
+
+<div>
+    <ol>
+        @foreach (FoodBasket foodBasket in Model)
+        {
+            <li>@foodBasket.ProductName - @foodBasket.ProductCount шт.</li>
+        }
+    </ol>
+</div>
+

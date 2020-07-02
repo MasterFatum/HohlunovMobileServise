@@ -79,5 +79,13 @@ namespace Web.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult MakeOrder()
+        {
+            IEnumerable<FoodBasket> foodBaskets = context.FoodBasket.ToList().OrderBy(n => n.ProductName);
+
+            return View(foodBaskets);
+        }
     }
 }

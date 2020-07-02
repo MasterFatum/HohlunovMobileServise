@@ -245,6 +245,7 @@
     <Content Include="Views\Home\Delivery.cshtml" />
     <Content Include="Views\Home\Main.cshtml" />
     <Content Include="Views\FoodBasket\Index.cshtml" />
+    <Content Include="Views\FoodBasket\MakeOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
