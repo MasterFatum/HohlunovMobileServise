@@ -1,18 +1,60 @@
-﻿@model IEnumerable<FoodBasket>
+﻿@model Web.Models.OrderViewModel
 
 
 @{
     ViewBag.Title = "Завершить покупку";
 }
 
-<h2>Завершение покупки</h2>
 
 <div>
     <ol>
-        @foreach (FoodBasket foodBasket in Model)
+        @foreach (FoodBasket foodBasket in Model.foodBaskets)
         {
             <li>@foodBasket.ProductName - @foodBasket.ProductCount шт.</li>
         }
     </ol>
 </div>
 
+<div class="alert alert-info">
+    <h3 align="center">Завершение заказа</h3>
+</div>
+<div align="center">
+
+    @Html.ActionLink("Вернуться в корзину", "Index", "FoodBasket", null, new { @class = "btn btn-primary" })<br /><br/>
+
+    @using (Html.BeginForm())
+    { 
+        @Html.Hidden("Id")
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>@Html.LabelFor(b => b.Order.Lastname):</b> @Html.TextBoxFor(b => b.Order.Lastname, new { @class = "form-control", required = "required" })
+                            </td>
+                            <td>
+                                <b>@Html.LabelFor(b => b.Order.Firstname):</b> @Html.TextBoxFor(b => b.Order.Firstname, new { @class = "form-control", required = "required" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>@Html.LabelFor(b => b.Order.Address):</b> @Html.TextBoxFor(b => b.Order.Address, new { @class = "form-control", required = "required" })
+                            </td>
+                            <td>
+                                <b>@Html.LabelFor(b => b.Order.Phone):</b> @Html.TextBoxFor(b => b.Order.Phone, new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            @Html.TextBox("Date", (String)ViewBag.DateNow, new { @class = "form-control", @readonly = "readonly" })
+                        </tr>
+                        <br />
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div align="center">
+            <input type="submit" value="Сделать заказ">
+        </div><br />
+    }
+</div>

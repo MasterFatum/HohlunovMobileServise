@@ -1,0 +1,50 @@
+﻿@using Web.Entities
+@model IQueryable<Web.Entities.Product>
+@{
+    ViewBag.Title = "SearchBook";
+}
+
+<div class="alert alert-info">
+    <h3 align="center">Найденные позиции</h3>
+    <h5><b>Всего найдено: @ViewBag.ProductsInList</b></h5>
+</div>
+
+<div align="center">
+    @Html.ActionLink("Назад", "Main", "Home", null, new { @class = "btn btn-primary" })
+</div><br/>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Продукт</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Количество</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @foreach (Product products in Model)
+            {
+                <tr>
+                    <td>
+                        @products.ProductName
+                    </td>
+                    <td>
+                        <b>@products.ProductPrice ₽</b>
+                    </td>
+                    <td>
+                        @products.ProductCount
+                    </td>
+                    <td>
+                        @Html.ActionLink("Добавить в корзину", "AddProductInFoodBasket", "Home", new { products.Id, products.ProductName, products.ProductPrice }, new { @class = "btn btn-success btn-xs" })
+                        @Html.ActionLink("Купить в 1 клик", "Main", "Home", new { products.Id }, new { @class = "btn btn-warning btn-xs" })
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+

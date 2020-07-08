@@ -51,7 +51,6 @@ namespace Web.Controllers
         {
             if (product != null)
             {
-
                 product.ProductCount = 1;
 
                 product.TotalPrice = product.ProductPrice;
@@ -61,6 +60,22 @@ namespace Web.Controllers
                 context.SaveChanges();
             }
             
+            return RedirectToAction("Main");
+        }
+
+        public ActionResult SearchBook(string name)
+        {
+            IQueryable<Product> products = null;
+
+            products = context.Products.Where(p => p.ProductName.Contains(name));
+
+            if (products != null)
+            {
+                ViewBag.ProductsInList = products.Count();
+
+                return View("SearchBook", products);
+            }
+
             return RedirectToAction("Main");
         }
     }

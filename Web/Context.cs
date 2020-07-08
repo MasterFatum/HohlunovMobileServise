@@ -1,11 +1,9 @@
 using Web.Entities;
+using System.Data.Entity;
 
 namespace Web
 {
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
+    
 
     public class Context : DbContext
     {
@@ -16,6 +14,7 @@ namespace Web
 
         public  DbSet<FoodBasket> FoodBasket { get; set; }
         public  DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{

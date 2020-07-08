@@ -11,6 +11,16 @@
 <div align="right">Количество товаров в корзине: <b>@Html.ActionLink((String)@ViewBag.CountProductsInBasket, "Index", "FoodBasket")</b></div>
 <br />
 
+@using (Html.BeginForm("SearchBook", "Home", FormMethod.Post))
+{
+
+    @Html.TextBox("Name", null, new { @class = "form-control" })
+    <br />
+    @Html.ActionLink("К общему списку", "Main", "Home", null, new { @class = "btn btn-primary" })
+    <input type="submit" value="Найти" class="btn btn-success">
+}
+<br />
+
 <div class="panel panel-success">
     <div class="panel-heading">
         <table class="table table-striped">
@@ -25,21 +35,21 @@
             <tbody>
                 @foreach (Product products in Model)
                 {
-                <tr>
-                    <td>
-                        @products.ProductName
-                    </td>
-                    <td>
-                        <b>@products.ProductPrice ₽</b>
-                    </td>
-                    <td>
-                        @products.ProductCount
-                    </td>
-                    <td>
-                        @Html.ActionLink("Добавить в корзину", "AddProductInFoodBasket", "Home", new { products.Id, products.ProductName, products.ProductPrice }, new { @class = "btn btn-success btn-xs" })
-                        @Html.ActionLink("Купить в 1 клик", "Main", "Home", new { products.Id }, new { @class = "btn btn-warning btn-xs" })
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            @products.ProductName
+                        </td>
+                        <td>
+                            <b>@products.ProductPrice ₽</b>
+                        </td>
+                        <td>
+                            @products.ProductCount
+                        </td>
+                        <td>
+                            @Html.ActionLink("Добавить в корзину", "AddProductInFoodBasket", "Home", new { products.Id, products.ProductName, products.ProductPrice }, new { @class = "btn btn-success btn-xs" })
+                            @Html.ActionLink("Купить в 1 клик", "Main", "Home", new { products.Id }, new { @class = "btn btn-warning btn-xs" })
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

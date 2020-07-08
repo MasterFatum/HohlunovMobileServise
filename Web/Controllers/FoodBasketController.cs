@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Web.Entities;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -85,7 +86,17 @@ namespace Web.Controllers
         {
             IEnumerable<FoodBasket> foodBaskets = context.FoodBasket.ToList().OrderBy(n => n.ProductName);
 
-            return View(foodBaskets);
+            ViewBag.DateNow = DateTime.Now.ToString();
+
+            return View(foodBaskets as OrderViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult MakeOrder(Order order)
+        {
+            OrderViewModel orderViewModel = new OrderViewModel();
+
+            return View("SuccessfulOrder", orderViewModel);
         }
     }
 }
