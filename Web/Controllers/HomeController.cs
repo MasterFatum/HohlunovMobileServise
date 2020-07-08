@@ -4,12 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Web.Entities;
+using Web.Repository;
 
 namespace Web.Controllers
 {
     public class HomeController : Controller
     {
         Context context = new Context();
+
+        AdditionalMethods other = new AdditionalMethods();
 
         public ActionResult Index()
         {
@@ -58,6 +61,8 @@ namespace Web.Controllers
                 context.FoodBasket.Add(product);
 
                 context.SaveChanges();
+
+                other.SubtractCountProducts(product.Id);
             }
             
             return RedirectToAction("Main");

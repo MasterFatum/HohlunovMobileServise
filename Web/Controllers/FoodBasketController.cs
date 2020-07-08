@@ -5,12 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using Web.Entities;
 using Web.Models;
+using Web.Repository;
 
 namespace Web.Controllers
 {
     public class FoodBasketController : Controller
     {
         Context context = new Context();
+
+        AdditionalMethods other = new AdditionalMethods();
         public ActionResult Index()
         {
             try
@@ -57,8 +60,6 @@ namespace Web.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -76,6 +77,8 @@ namespace Web.Controllers
                 context.FoodBasket.Remove(foodBasket);
 
                 context.SaveChanges();
+
+                other.AddCountProducts(id);
             }
 
             return RedirectToAction("Index");

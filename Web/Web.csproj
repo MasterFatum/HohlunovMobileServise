@@ -186,7 +186,7 @@
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Email.cs" />
-    <Compile Include="Repository\OtherMethods.cs" />
+    <Compile Include="Repository\AdditionalMethods.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
